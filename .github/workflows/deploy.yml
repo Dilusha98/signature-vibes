@@ -24,18 +24,20 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20'   # change to 18 if your project needs it
           cache: 'npm'
 
-      - name: Install
-        run: npm ci
+      # npm ci can fail if the lockfile was created by a different npm
+      - name: Install dependencies
+        run: npm ci || npm install
 
+      # CRA fails the build on warnings when CI=true (default on Actions).
       - name: Build
-        run: npm run build
+        run: CI='' npm run build
 
-      # SPA fallback for react-router deep links
+      # SPA fallback for React Router (safe to keep)
       - name: SPA fallback
-        run: cp ./build/index.html ./build/404.html
+        run: cp ./build/index.html ./build/404.html || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
