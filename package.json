@@ -2,6 +2,7 @@
   "name": "ecommerce-shop",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dilusha98.github.io/signature-vibes",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
