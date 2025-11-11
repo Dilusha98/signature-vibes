@@ -12,6 +12,7 @@ const App = () => {
   return (
     <div className="overflow-hidden">
       <Router>
+        <Router basename="/signature-vibes"></Router>
         <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
